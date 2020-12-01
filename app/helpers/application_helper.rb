@@ -1,7 +1,7 @@
 module ApplicationHelper
     
  def title_name(page_name = "")
-   base_title = "Attendance App"
+   base_title = "勤怠システム"
    if page_name.nil?
        base_title
    else
