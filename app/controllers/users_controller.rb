@@ -22,10 +22,19 @@ class UsersController < ApplicationController
     end
   end
   
-  def edit 
+  def edit
+    @user = User.find(params[:id])
   end
   
   def update
+    @user = User.find(params[:id])
+    if @user.update_attributes(params_user)
+      flash[:success] = "ユーザー情報を更新しました。"
+      redirect_to @user
+    else
+      flash.now[:danger] = "ユーザー情報の更新に失敗しました。"
+      render :edit
+    end
   end
   
   
