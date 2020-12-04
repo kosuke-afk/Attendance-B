@@ -34,9 +34,11 @@ class User < ApplicationRecord
     update_attribute(:remember_digest, User.digest(remember_token))  # remember_digestにremember_tokenをハッシュ化したものを入れて更新
   end
   
+  
   def forget
     update_attribute(:remember_digest, nil)
   end
+  
   # remember_tokenとremember_digestの認証に使う。 トークンとダイジェストが一致すれば、true
   def authenticated?(remember_token)
     return false if remember_digest.nil?
