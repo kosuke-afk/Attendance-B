@@ -7,7 +7,11 @@
       <tbody>
         <% @users.each do |user| %>
           <tr>
-            <td><%= link_to user.name, user_path(user) %></td>
+            <td ><%= link_to user.name, user_path(user) %></td>
+            <td class="text-right"><%= link_to "基本情報編集", edit_basic_info_user_path(user), class: "btn btn-success" %>
+                <%= link_to "削除", user, method: :delete, 
+                class: "btn btn-danger", data: { confirm: "削除してよろしいですか？"} %>
+            </td>
           </tr>
         <% end %>
       </tbody>
