@@ -4,6 +4,7 @@ class UsersController < ApplicationController
   before_action :log_in_user, only: [:show, :edit, :update]
   before_action :admin_or_correct_user, only: :show
   before_action :admin_user, only: :index
+  before_action :set_one_month, only: :show
   
   
   def show
