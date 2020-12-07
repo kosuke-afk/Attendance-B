@@ -74,35 +74,6 @@ class UsersController < ApplicationController
     end
     
     
-
-    def set_user
-      @user = User.find(params[:id])
-    end
-    
-      # ログインユーザーのみが使えるようにする認可機能
-    def log_in_user
-      unless logged_in?
-        flash[:danger] = "ログインしてください。"
-        redirect_to login_url
-      end
-    end
-    
-    # 管理者権限を持っているユーザーしか使えないようにする認可機能
-    def admin_user
-      unless current_user.admin?
-        flash[:danger] = "権限がありません"
-        redirect_to root_url
-      end
-    end
-    
-    # 現在ログインしているユーザーとページを訪れているユーザーが同一の場合のみ認可する機能
-    def correct_user
-      unless current_user?(@user)
-        flash[:danger] = "権限がありません。"
-        redirect_to root_url
-      end
-    end
-    
     def admin_or_correct_user
       unless current_user.admin? || current_user?(@user)
         flash[:danger] = "権限がありません。"
