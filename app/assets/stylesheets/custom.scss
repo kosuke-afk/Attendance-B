@@ -16,6 +16,10 @@ textarea {
   resize: vertical;
 }
 
+table {
+  margin-top: 15px;
+}
+
 .center {
  text-align: center;
 }
@@ -100,5 +104,7 @@ p {
     color: $state-danger-text;
   }
 }
+
+
 
 
