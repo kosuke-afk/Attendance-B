@@ -22,9 +22,18 @@ class ApplicationController < ActionController::Base
   end
     
    # 現在ログインしているユーザーとページを訪れているユーザーが同一の場合のみ認可する機能
-  def correct_user
-    redirect_to root_url unless current_user?(@user)
-  end
+   def admin_or_correct_user
+      unless current_user.admin? || current_user?(@user) 
+        flash[:danger] = "権限がありません。"
+        redirect_to root_url
+      end
+   end
+   
+   def correct_user
+     redirect_to root_url unless current_user?(@user)
+   end
+  
+  
   
   def set_one_month
     @first_day = params[:date].nil? ?

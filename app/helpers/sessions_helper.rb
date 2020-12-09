@@ -41,6 +41,8 @@ module SessionsHelper
     !current_user.nil?
   end
   
-  
+  def correct_user
+    redirect_to(root_url) unless correct_user?(@user)
+  end
   
 end
