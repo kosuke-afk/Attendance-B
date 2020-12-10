@@ -29,6 +29,7 @@ class ApplicationController < ActionController::Base
       end
    end
    
+   # 現在ログインしているユーザーが本人の場合だけ許可する機能
    def correct_user
      redirect_to root_url unless current_user?(@user)
    end

@@ -49,5 +49,13 @@ class User < ApplicationRecord
     BCrypt::Password.new(remember_digest).is_password?(remember_token)
   end
   
+  def self.search(search)
+    if search
+      User.where(['name LIKE ?', "%#{search}%"])
+    else
+      User.all
+    end
+  end
+  
   
 end
