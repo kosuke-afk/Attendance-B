@@ -8,8 +8,8 @@ module AttendancesHelper
     return false
   end
     
-  
+
   def working_times(start,finish)
-    format("%.2f", (((finish - start) / 60) / 60.0))
+    format("%.2f", (((finish - start) / 60) / 60.0)) # 時間の計算は秒数で行われるから、/60で時間に戻している。
   end
 end
